@@ -1,0 +1,50 @@
+\chapter{introduction}
+
+Artificial intelligence is a system that can perceive the surrounding environment, evaluate it, make decisions, and execute actions to achieve a goal set by the user.
+
+The perception is usually based on image data using specialized sensors. Evaluation of these data means recognizing objects that are contained in images, etc.
+
+Decision making can be understood as an optimization problem under boundary conditions, e.g. for self-driving cars we know they don't fly, etc.
+
+There is a \textbf{general} artificial intelligence, which (for now) belongs to the science fiction and it is an intelligence capable of everything that a human or other intelligent being can do. Nowadays they are working with \textbf{specific} artificial intelligence capable of solving only specific problems.
+
+Machine learning can be divided into \textbf{classical methods} (handcrafted features) and \textbf{deep learning} and other methods. Classical methods generally require less data and require the human to choose some parameters. On the other hand, deep learning needs a large amount of data but then finds the parameters itself. The second problem is that neural networks do not provide an explanation for why they give the results they do.
+
+\begin{define}[Pattern Recognition (PR)]
+  Assigning a pattern/object to one of pre-defined classes.
+\end{define}
+
+\begin{define}[Statistical (feature-based) PR]
+  The pattern is described by features, i.e. an n-D vector.
+\end{define}
+
+There is a \textbf{Supervised PR} and \textbf{Unsupervised PR}. The supervised has training set available for each class. The Unsupervised PR sometimes does not even have the number of classes set.
+
+\subsection*{Desirable properties of the training set}
+A good dataset contains typical representatives of each class including intra-class variations. It should also be reliable and large enough. If possible, the data should be annotated by domain experts. There will always problems in the training data, such as expert mistakes, wrong annotations, misunderstanding data etc.
+
+There are several desirable properties of the features. (!!! missing text Lukáš) \textbf{Invariance}, \textbf{Discriminability}, \textbf{Robustness}, \textbf{Efficiency, independence, completeness, etc.}
+
+\begin{define}[Complete feature space (úplný příznakový prostor)]
+  Is a feature space from which the original image (or another data) can be fully reconstructed.
+\end{define}
+
+
+\begin{define}[Independence]
+  Independence means that any feature cannot be made from other features.
+\end{define}
+
+In order to make a good recognition model, it is necessary to make all the objects from the same class close to each other in the feature space, while data from different classes far from each other. As an example, letters "C" and "G" have a curve in common but in the feature space they must be far. Another crucial thing is to prevent overfitting, i.e. making a classifier 100\% perfect at the training data. This classifier can be completely useless on new data.
+
+Each class is characterized by its discriminant function $g(x)$. Classification is then a maximization of $g(x)$. Asigning $x$ to class $i$ if
+$$ g_i(x) > g_j(x),\qquad \forall j\neq i.$$
+Discriminant functions define decision boundaries in the feature space.
+
+In the process of classification we try to maximize $\max\limits_{i} p(w_i|x)$ given a data $x$. We then choose a class which has the highest probability.
+
+\begin{example}
+If we have a 2D feature space with 2 classes with Gauss probability
+$$  p(\textbf{x})=\frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}}\exp\Big[ -\frac{1}{2}(\textbf{x}-\boldsymbol{\mu})^t\Sigma^{-1}(\textbf{x}-\boldsymbol{\mu}) \Big],$$ the resulting classes borders can be any conic section, e.g. a line, parabola, hyperbola etc. Note that in the case of hyperbolic borders there will be actually 2 curves.
+\end{example}
+
+!!! Lukáš add eigenvectors etc.
