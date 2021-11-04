@@ -1,0 +1,28 @@
+\section{Dimensionality reduction (DR)}
+There are several possible methods. First, in \textbf{Feature extraction} the features are trasform as $T: \R^D\to\R^n$. In this process a new feature space is created and the original features loose their meaning.
+
+chybí to druhé (byl moc rychlý)
+
+\subsection{Principal Component Transform (PCT)}
+PCT is a method used for one-class problem (we don't have a training set and a test set separately). Here we only have a cloud of data point in the feature space.
+
+něco diagonála (WTF)
+
+Finally, PCR only rotates the data so that they are no longer correlated. This method assumes that the utility of each feature depends on its variance. With zero variance the feature would be a constanc for all data. Therefore, this method rotates the data and keeps $n$ features with the highest variance.
+
+One of the possible usage is in displaying multi-spectral image (e.g. with 256 channels). In the the 3 main components are shown in pseudo-real colors. On the other hand, PCT is not suitable for classification problem since sometimes the essential feature may be the one with lowest variance. It is still possible to use it but we must always remember that this could be a reason of failure.
+
+One example of using the PCT is the Face recognition, where each face dissolves into a linear combination of $n$ components. We can then use the linear coefficients and always take the closest data for evaluation.
+
+\subsection{Multi-class problem}
+In this problem training sets for each class must be available. Dimensionality reduction methods for classification purposes must consider the discrimination ... z jeho webu
+
+To select appropriate features we must define \textbf{Discriminability measure} which we want to maximize and a proper \textbf{Selection strategy}.
+For this task we cannot use the Ward criterion since we would need to add the distance of mean values. In clustering the dimension is not reduced so this problem does not exist.
+
+Therefore we use the \textbf{Mahalanobis distance} defined as
+$$ (\textbf{m}_1-\textbf{m}_2)^T (C_1+C_2)^{-1}(\textbf{m}_1-\textbf{m}_2),$$
+where $\textbf{m}$ is a mean value and $C_i$ are $i$-th order covariation matrices.
+This metric is however a bad idea for multi-modal distributions since it could choose a wrong feature.
+
+\chapter{SU2}
